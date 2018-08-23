@@ -53,6 +53,14 @@ func (cs *Csender) initHubHttpClient() {
 func (cs *Csender) PostResultsToHub(result Result) error {
 	cs.initHubHttpClient()
 
+	if cs.HubURL == "" {
+		return fmt.Errorf("Both 'hub_url' in config and 'CSENDER_HUB_URL' env variable are empty")
+	}
+
+	if _, err := url.Parse(cs.HubURL); err != nil {
+		return fmt.Errorf("Can't parse Hub URL: %s", err.Error())
+	}
+
 	b, err := json.Marshal(result)
 	if err != nil {
 		return err
