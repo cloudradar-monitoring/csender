@@ -1,0 +1,12 @@
+# This is example config
+
+# Logging
+log = "/var/log/frontman/frontman.log" # log file location
+log_level = "info" # "debug", "info", "error" verbose level; can be overriden with -v flag
+
+hub_url = "" # requires io_mode to be "http"
+hub_user = "" # requires io_mode to be "http"
+hub_password = "" # requires io_mode to be "http"
+hub_proxy = "" # HTTP proxy to use with HUB, requires io_mode to be "http"
+hub_proxy_user = "" # requires hub_proxy to be set
+hub_proxy_password = "" # requires hub_proxy_user to be set
