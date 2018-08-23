@@ -1,0 +1,49 @@
+builds:
+- main: cmd/csender/main.go
+  binary: csender
+  goos:
+  - windows
+  - darwin
+  - linux
+  goarch:
+  - 386
+  - amd64
+  - arm
+  - arm64
+  goarm:
+  - 7
+  # List of combinations of GOOS + GOARCH + GOARM to ignore.
+  ignore:
+  - goos: darwin
+    goarch: 386
+  - goos: windows
+    goarch: arm
+  - goos: darwin
+    goarch: arm
+  - goos: windows
+    goarch: arm64
+  - goos: darwin
+    goarch: arm64
+  ldflags:
+  - -X "main.VERSION={{.Env.CSENDER_VERSION}}"
+  env:
+  - CGO_ENABLED=0
+archive:
+  files:
+  - README.md
+  replacements:
+    darwin: Darwin
+    linux: Linux
+    windows: Windows
+    386: i386
+    amd64: x86_64
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
