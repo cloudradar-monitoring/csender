@@ -3,10 +3,11 @@ package csender
 import (
 	"errors"
 	"fmt"
-	log "github.com/sirupsen/logrus"
 	"regexp"
 	"strconv"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 )
 
 const MaxMessageLength = 300
@@ -100,7 +101,7 @@ func (res *Result) SetSuccess(s int) error {
 func (res *Result) SetMessage(s string) error {
 	if len(s) > MaxMessageLength {
 		s = s[0:MaxMessageLength]
-		log.Error("message was truncated to %s symbols", MaxMessageLength)
+		log.Errorf("message was truncated to %d symbols", MaxMessageLength)
 	}
 	res.Message = s
 	return nil
