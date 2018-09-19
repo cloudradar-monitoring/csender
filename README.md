@@ -2,7 +2,7 @@
 - [Install Golang 1.9 or newer](https://golang.org/dl/)
 ```bash
 go get -d -u github.com/cloudradar-monitoring/csender
-go build -o -ldflags="-X main.VERSION=$(git --git-dir=src/github.com/cloudradar-monitoring/csender/.git describe --always --long --dirty --tag)" csender github.com/cloudradar-monitoring/csender/cmd/csender
+go build -o -ldflags="-X main.version=$(git --git-dir=src/github.com/cloudradar-monitoring/csender/.git describe --always --long --dirty --tag)" csender github.com/cloudradar-monitoring/csender/cmd/csender
 ```
 
 ## How to run
@@ -30,5 +30,5 @@ Default locations:
 ## Build binaries and deb/rpm packages
 – Install [goreleaser](https://goreleaser.com/introduction/)
 ```bash
-CSENDER_VERSION=$(git describe --always --long --dirty --tag) goreleaser --snapshot
+goreleaser --snapshot
 ```

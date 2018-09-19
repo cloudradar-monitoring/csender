@@ -14,8 +14,8 @@ import (
 
 var (
 	// set on build:
-	// go build -o csender -ldflags="-X main.VERSION=$(git --git-dir=src/github.com/cloudradar-monitoring/csender/.git describe --always --long --dirty --tag)" github.com/cloudradar-monitoring/csender/cmd/csender
-	VERSION string
+	// go build -o csender -ldflags="-X main.version=$(git --git-dir=src/github.com/cloudradar-monitoring/csender/.git describe --always --long --dirty --tag)" github.com/cloudradar-monitoring/csender/cmd/csender
+	version string
 )
 
 type flagslice []string
@@ -50,7 +50,7 @@ func (sf *intFlag) String() string {
 
 func main() {
 	cs := csender.New()
-	cs.SetVersion(VERSION)
+	cs.SetVersion(version)
 
 	var exitCodeFlag intFlag
 	var successFlag intFlag
@@ -70,7 +70,7 @@ func main() {
 	flag.Parse()
 
 	if *versionPtr {
-		fmt.Printf("csender v%s released under MIT license. https://github.com/cloudradar-monitoring/csender/\n", VERSION)
+		fmt.Printf("csender v%s released under MIT license. https://github.com/cloudradar-monitoring/csender/\n", version)
 		return
 	}
 	tfmt := log.TextFormatter{FullTimestamp: true, DisableLevelTruncation: true, DisableTimestamp: true}
