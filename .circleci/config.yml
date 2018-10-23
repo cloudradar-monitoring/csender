@@ -3,7 +3,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: cloudradario/go-build:0.0.3
+      - image: cloudradario/go-build:0.0.6
     working_directory: /go/src/github.com/cloudradar-monitoring/csender
     steps:
       - checkout
@@ -11,7 +11,7 @@ jobs:
   
   gorelease:
     docker:
-      - image: cloudradario/go-build:0.0.3
+      - image: cloudradario/go-build:0.0.6
     working_directory: /go/src/github.com/cloudradar-monitoring/csender
     steps:
       - checkout
@@ -21,8 +21,8 @@ jobs:
   
   goreleasse-test:
     docker:
-      - image: cloudradario/go-build:0.0.5
-    working_directory: /go/src/github.com/cloudradar-monitoring/frontman
+      - image: cloudradario/go-build:0.0.6
+    working_directory: /go/src/github.com/cloudradar-monitoring/csender
     steps:
       - checkout
       - run: goreleaser --snapshot
